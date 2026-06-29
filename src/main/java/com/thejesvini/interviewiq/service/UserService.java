@@ -1,30 +1,18 @@
 package com.thejesvini.interviewiq.service;
 
+import com.thejesvini.interviewiq.dto.LoginRequest;
+import com.thejesvini.interviewiq.dto.RegisterRequest;
 import com.thejesvini.interviewiq.entity.User;
-import com.thejesvini.interviewiq.repository.UserRepository;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
-public class UserService {
+public interface UserService {
 
-    private final UserRepository repository;
+    User register(RegisterRequest request);
 
-    public UserService(UserRepository repository) {
-        this.repository = repository;
-    }
+    String login(LoginRequest request);
 
-    public User register(User user) {
+    List<User> getAllUsers();
 
-        if(repository.existsByEmail(user.getEmail())){
-            throw new RuntimeException("Email already exists");
-        }
-
-        return repository.save(user);
-    }
-
-    public List<User> getAllUsers() {
-        return repository.findAll();
-    }
+    User getUserByEmail(String email);
 }

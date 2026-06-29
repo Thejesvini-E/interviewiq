@@ -1,5 +1,12 @@
 package com.thejesvini.interviewiq.dto;
 
-public class Jwtresponse {
-    
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor
+public class JwtResponse {
+
+    private String token;
+    private String type;
 }

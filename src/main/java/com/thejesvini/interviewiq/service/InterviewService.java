@@ -1,5 +1,5 @@
-// package com.thejesvini.interviewiq.service;
+package com.thejesvini.interviewiq.service;
 
-// public class InterviewService {
+public class InterviewService {
     
-// }
+}
