@@ -1,0 +1,5 @@
+package com.thejesvini.interviewiq.service;
+
+public class CompanyService {
+    
+}

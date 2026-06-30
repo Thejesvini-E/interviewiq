@@ -1,5 +1,45 @@
 package com.thejesvini.interviewiq.entity;
 
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "resumes")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Resume {
-    
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false)
+    private String fileName;
+
+    @Column(nullable = false)
+    private String fileType;
+
+    @Column(nullable = false)
+    private String filePath;
+
+    @Lob
+    @Column(columnDefinition = "TEXT")
+    private String extractedText;
+
+    @Column(nullable = false)
+    private LocalDateTime uploadedAt;
+
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @PrePersist
+    public void onUpload() {
+        uploadedAt = LocalDateTime.now();
+    }
 }
